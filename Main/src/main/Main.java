@@ -9,21 +9,26 @@ public class Main
 		// Solicite al usuario ingresar el valor de un vector de traslación 
 		// Aplique el vector de traslación anterior a cada uno de los objetos referidos
 		// Muestre las posiciones originales y finales de cada uno de los objetos referidos
-                Cuadrado cuad = new Cuadrado();
+                int xi,yi,xf,yf,lado;              
+                
                 Circunferencia cir = new Circunferencia();
                 Scanner l = new Scanner(System.in);
                 System.out.println("Ingrese coordenada inicial");
-                System.out.println("Ingrese x");
-                int xi = l.nextInt();
-                System.out.println("Ingrese y");
-                int yi = l.nextInt();
-                System.out.println("Ingrese coordenada final");
-                System.out.println("Ingrese x");
-                int xf = l.nextInt();
-                System.out.println("Ingrese y");
-                int yf = l.nextInt(); 
+                System.out.print("Ingrese x: ");
+                xi = l.nextInt();
+                System.out.print("Ingrese y: ");
+                yi = l.nextInt();
+                System.out.println("Ingrese el vector de traslacion");
+                System.out.print("Ingrese x: ");
+                xf = l.nextInt();
+                System.out.print("Ingrese y: ");
+                yf = l.nextInt(); 
                 System.out.println("Ingrese el lado del cuadrado");
-                int lado = l.nextInt();
+                lado = l.nextInt();
+                Coord coini = new Coord(xi,yi);
+                Coord vect = new Coord(xf,yf);
+                Cuadrado cuad = new Cuadrado(coini,lado);               
+                cuad.Traslacion(vect);
 	}
 }
  
@@ -50,24 +55,30 @@ class Coord {
     public void setY(int y) {
         this.y = y;
     }
-    
+    public void imprimir1(){
+        System.out.println("La cordenada inicial del primer vertice es: " + x +","+ y);
+    }
+    public void imprimir2(){
+        System.out.println("La cordenada final del primer vertice es: " + x +","+ y);
+    }
 }
 
 class Cuadrado {
     private Coord c;
     private int lado;
-    public Cuadrado(){
-    }
+
     public Cuadrado(Coord c, int lado) {
         this.c = c;
         this.lado = lado;
     }
     public void Traslacion(Coord t) {  // Complete los parámetros requeridos
+        c.imprimir1();
         c.setX(t.getX()+c.getX());
-        c.setY(t.getY()+c.getY());      
+        c.setY(t.getY()+c.getY());
+        c.imprimir2();
     }
-    public void Escalado() {  // Complete los parámetros requeridos
-        
+    public void Escalado(int s) {  // Complete los parámetros requeridos
+        lado = (int)(lado*(1+s/100.0f));
     }
     public void Rotacion() {  // Complete los parámetros requeridos
         
